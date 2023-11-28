@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery Google CDN: -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>  
+    <!-- Include jQuery Form Validation Plugin -->
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+     <!-- Google Font Inter - Headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+ <!-- Google Font Roboto - body text -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,700&family=Montserrat:ital,wght@0,400;0,700;1,700&family=Open+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet">
+ 
+
+<!-- CSS style sheet linked-->
+    <link rel="stylesheet" href="style.css">
+    <title>Accomodation Web App for Tourism NZ</title>
+  </head>
+
+
+  <body>
+ <!-- FORM container, Destination, Date, Guests -->
+ <section class="sectionOne" id="sectionOne">
+    <div class="container">
+        <img src="images/cutout-pure-new-zealand-logo .png" class="rounded mx-auto d-block" alt="100% Pure NZ Logo">
+        <form id="accomForm" class="w-60 mx auto py-5 shadow p-4" method="post" autocomplete="off">
+            <h3>Hare Mai, we look forward to welcoming you.</h3> <hr>
+            <h6>Select your short stay accomodation option below</h6>
+            <div class="row">
+            <div class="col">
+
+                <input id="destinationSelect" class="form-control" name="destinationSelect" placeholder="Christchurch"class="form-control" readonly/>
+            </input>
+
+            </div>
+
+ <!--BOOTSTRAP CALENDAR-->
+              <div class="col">
+              <input type="text" name="dateRange" class="form-control dateRange" placeholder="Dates" id="dateRange" required/>
+              <label for="daterange"></label>
+              </div>
+
+              <div class="col">
+                <input name="guestsNum" id="guestsNum" class="form-control" placeholder="Guests (4 max)">
+                </input>
+                
+                </div>
+<!-- SUBMIT BUTTON Div-->
+<div class="mb-3 d-flex">
+    <button type="submit" class="btn btn-primary" id="submitOne" name="submitOne">book</button>
+<!-- <p class="form-label ms-auto mt-2">Create New Account ?</p> -->
+</div>
+        </form>
+    </div>
+  </section>
+<!--END section 1 -->
+
+
+<!--Section 2 x 4 sections -->
+
+<div id="containerTwo" class="containerTwo"> 
+
+<!--HOUSE rules: max 15 nights, max 4 guests -->
+<section class="card" style="width: 18rem;" id="houseOption">
+  <img class="card-img-top" src="images/house-240.jpeg" alt="img house">
+  <div class="card-body">
+    <h5 class="card-title">House</h5>
+    <p class="card-text">Entire rental unit in Christchurch, New Zealand.  </br> </br> Min 1 night, max 15 night stay.
+    </br></br>1-4 people</br> </br> $240 per nights</p>
+    <a href="#" class="btn btn-primary">Book Now</a>
+  </div>
+</section>
+
+<!--HOTEL rules: max 5 nights, max 2 guests -->
+<section class="card" style="width: 18rem;" id="hotelOption">
+    <img class="card-img-top" src="images/hotel-157.jpeg" alt="img hotel">
+    <div class="card-body">
+      <h5 class="card-title">Hotel</h5>
+      <p class="card-text">Offers modern accommodation in the centre of Christchurch. </br> </br> Min 1 night, max 5 nights stay.
+      </br></br>1-2 people</br> </br> $157 per night</p>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+</section>
+
+<!--MOTEL rules: MIN 3 nights max 10 nights, min 2, max 4 guests -->
+<section class="card" style="width: 18rem;" id="motelOption">
+    <img class="card-img-top" src="images/motel-90.jpeg" alt="img motel">
+    <div class="card-body">
+      <h5 class="card-title">Motel</h5>
+      <p class="card-text">Just 10 minutes walk from Christchurch Casino. </br> </br> Min 3 nights, max 10 night stay.
+      </br></br>2-4 people</br> </br> $90 per night</p>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+</section>
+
+<!--HOSTEL rules: MIN 3 nights max 15 nights, 1 guest max -->
+<div class="card" style="width: 18rem;" id="hostelOption">
+    <img class="card-img-top" src="images/hostel-30.jpeg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Hostel</h5>
+      <p class="card-text">Enjoy a meal and relax in the lovely BBQ and garden area. </br> </br> Min 3 nights, max 15 night stay. </br></br>1 person</br> </br> $30 per night</p>
+      <a href="#" class="btn btn-primary">Book Now</a>
+    </div>
+  </div>
+  <!--End FIXED section 2 below is the ending DIV-->
+</div>
+
+
+     <!-- Date Range Picker To get started, include jQuery, Moment.js and Date Range Picker's files in your webpage https://www.daterangepicker.com/  A JavaScript component for choosing date ranges, dates and times. -->
+    
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+
+<script src="/script.js"></script>
+  </body>
+</html>
