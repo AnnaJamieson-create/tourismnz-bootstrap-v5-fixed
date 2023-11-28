@@ -1,0 +1,214 @@
+//EXAMPLE OF HOW TO WRITE Jqery from YOOBEE
+//$(document).ready(function() {
+  // jQuery methods go here...
+//});
+
+// Below javaScript
+//document.getElementById("submitOne").onclick = function () {
+  //alert("hello");
+//}
+//below jQuery
+//$("submitOne").click(function(){
+  //alert("hello");
+//})
+
+
+// DATE RANGE PICKER
+$(document).ready(function() {
+  const dateRangePicker = $('input[name="dateRange"]').daterangepicker({
+    opens: 'below',
+    locale: {
+      format: 'DD-MM-YYYY',
+    },
+    autoUpdateInput: false,
+  });
+
+  dateRangePicker.val('');
+
+  dateRangePicker.on('apply.daterangepicker', function(ev, picker) {
+    $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+  });
+
+  dateRangePicker.on('cancel.daterangepicker', function(ev, picker) {
+    $(this).val('');
+  });
+
+
+  // 01 FORM VALIDATION
+  $("#accomForm").validate({
+    rules: {
+      dateRange: "required",
+      guestsNum: {
+        required: true,
+        max: 4, // Maximum number of guests allowed
+      },
+    },
+    messages: {
+      dateRange: "Please select dates",
+      guestsNum: {
+        required: "Please enter the number of guests",
+        max: "Maximum 4 guests allowed",
+      },
+    },
+
+    //Below DOESNT SEEM TO DO ANYTHING
+    //errorPlacement: function(error, element) {
+      //if (element.attr("name") === "dateRange") {
+        //error.appendTo(element.parent().parent());
+      //} else {
+        //error.insertAfter(element);
+      //}
+    //},
+
+    //CHECK guestNum not valid why??
+    submitHandler: function(form) {
+      // Get the values from the form inputs
+      const dateRange = $("#dateRange").val();
+      const guestsNum = parseInt($("#guestsNum").val(), 10); 
+
+      // 02 VALID DATES MSG
+      if (!isValidDateRange(dateRange)) {
+        displayValidationMessage("Please select valid dates.");
+        return;
+      }
+
+      //03 VALID NIGHTS MSG
+      if (isDateRangeExceedsLimit(dateRange, 15)) {
+        displayValidationMessage("Please select dates up to 15 nights.");
+        return;
+      }
+
+      // Submit the form or perform other actions as needed
+      //form.submit();
+    }
+  });
+
+  // 04 VALIDATE DATE RANGE
+  function isValidDateRange(dateRange) {
+    // You can implement your own validation logic here
+    // For simplicity, let's check if the dateRange is not empty
+    return dateRange.trim() !== '';
+  }
+
+  // Function to check if the selected date range exceeds a specified limit
+  function isDateRangeExceedsLimit(dateRange, limit) {
+    const [startDate, endDate] = dateRange.split(' - ');
+    const daysDifference = Math.abs(moment(endDate, 'DD-MM-YYYY').diff(moment(startDate, 'DD-MM-YYYY'), 'days'));
+    return daysDifference > limit;
+  }
+
+  // Function to display validation message below the date input
+  function displayValidationMessage(message) {
+    const messageElement = $("<div>").addClass("text-danger").text(message);
+    $("#dateRange").parent().append(messageElement);
+  }
+
+//space to Test function show hide below///
+
+});
+
+
+  // ABOVE ALL WORKS
+
+//Rules for accom//
+//HOUSE rules: max 15 nights, max 4 guests 
+//HOTEL rules: max 5 nights, max 2 guests
+//MOTEL rules: MIN 3 nights max 10 nights, min 2, max 4 guests
+//HOSTEL rules: MIN 3 nights max 15 nights, 1 guest max 
+
+
+
+  //Trying a funtion in here
+  // On click go to section 2 NOT WORKING
+//$("#submitOne").on("click", function(e) {
+  //  e.preventDefault();
+    //if ($("#accomForm").valid()) {
+      //  $(".sectionOne").hide();
+        //$(".accomOption").show();
+    //}
+//});
+
+
+
+// Below not working
+
+
+
+
+//  $("#submitOne").on("click", function(e) {
+  //const guestsNum = 4;
+  //const dateRange = 5;
+  //if (guestsNum <= 4 & dateRange <=5) {
+    //$(".sectionOne").hide();
+    //$(".hotelOption").show();
+  //}
+//});
+
+
+  // On click go to section 2 NOT WHAT WE WANT
+//$("#submitOne").on("click", function(e) {
+  //  e.preventDefault();
+    //if ($("#accomForm").valid()) {
+      //  $(".sectionOne").hide();
+       // $(".sectionTwo").show();
+    //}
+//});
+
+
+
+//Show HOtel Option IN PROGRESS
+//function showHotelOption() {
+  // Get the values from the form inputs
+  //const guestsNum = parseInt($("#guestsNum").val(), 10);
+  //const dateRange = $("#dateRange").val();
+  
+  // Check if the selected number of guests is up to 4 and the nights are up to 5
+  //if (guestsNum <= 4 && isDateRangeExceedsLimit(dateRange, 5)) {
+    //$("#hotelOption").show();
+  //} else {
+    //$("#hotelOption").hide();
+  //}
+//}
+
+// Call the showHotelOption function whenever the guests or night stay changes
+//$("#guestsNum, #dateRange").on("change", showHotelOption);
+
+  
+ 
+
+
+
+
+
+//$("#submitOne").on("click", function(event) {
+  // Prevent the default form submission
+  //event.preventDefault();
+
+  // Trigger form validation manually
+  //if ($("#accomForm").valid()) {
+    // Submit the form (Note: You can remove this line if you don't want to submit the form)
+    //$("#accomForm").submit();
+  //}
+//});
+
+
+// On click go to section 2 NOT WHAT WE WANT
+//$("#submitOne").on("click", function(e) {
+  //  e.preventDefault();
+    //if ($("#accomForm").valid()) {
+      //  $(".sectionOne").hide();
+       // $(".sectionTwo").show();
+    //}
+//});
+
+
+//Date Range Picker works
+//$(document).ready(function() {
+  //const dateRangePicker = $('input[name="dateRange"]').//daterangepicker({
+  //  opens: 'below',
+    //locale: {
+      //format: 'DD-MM-YYYY',
+    //},
+  //});
+  //dateRangePicker.val('');
+//});
